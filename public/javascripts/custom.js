@@ -1,15 +1,23 @@
 var sno=0;
 $(document).ready(function () {
     getstudents();
+    gethead();
 });
 
+function gethead(){
+    $.ajax({
+        url: "/head"
+    }).then(function(head){
+        const head = ``
+    });
+}
 
 //function to get data using ajax
 function getstudents() {
     $.ajax({
         url: "student/marks"
     }).then(function (studentsmarks) {
-        console.log(studentsmarks);
+       // console.log(studentsmarks);
         const students = `${studentsmarks.sort((a,b)=>
             parseFloat(a.regno)-parseFloat(b.regno)).map(student => `
         <tr>
