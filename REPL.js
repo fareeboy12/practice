@@ -21,7 +21,7 @@ const db = require("./models");
 //     console.log(JSON.stringify(res));
 // });
 
-db.Grade.find().sort({_id:1})
+db.Grade.find().sort({gradeid:1})
     .then((res) =>{
         console.log(res);
         // res.status(200).json(head);
