@@ -5,6 +5,7 @@ $(document).ready(function () {
         var sno = $(this).parent().parent().children().eq(0).text();
         var name = $(this).text();
         var regno = $(this).parent().parent().children().eq(1).text();
+        var semitotal = $();
     });
 });
 
@@ -46,7 +47,7 @@ function gethead(){
         <th scope="col">Name</th>
         <th scope="col">Reg. #</th>
         ${headid.map(headData => 
-            `<th scope="col">${headData.headname}</th>`)}
+            `<th scope="col" marks="${headData.total}">${headData.headname}</th>`)}
             <th scope="col">Total</th>
             <th scope="col">Percentage</th>
             <th scope="col">Grade</th>
