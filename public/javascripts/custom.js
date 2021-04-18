@@ -9,7 +9,8 @@ function getstudents() {
         url: "student/marks"
     }).then(function (studentsmarks) {
         console.log(studentsmarks);
-        const students = `${studentsmarks.map(student => `
+        const students = `${studentsmarks.sort((a,b)=>
+            parseFloat(a.regno)-parseFloat(b.regno)).map(student => `
         <tr>
             <th scope="row">1</th>
             <td>${student.name}</td>
