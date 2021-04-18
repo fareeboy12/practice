@@ -21,8 +21,20 @@ const db = require("./models");
 //     console.log(JSON.stringify(res));
 // });
 
-db.Grade.find().sort({gradeid:1})
-    .then((res) =>{
-        console.log(res);
-        // res.status(200).json(head);
-    });
+// db.Grade.find().sort({gradeid:1})
+//     .then((res) =>{
+//         console.log(res);
+//         // res.status(200).json(head);
+//     });
+
+db.Mark.updateOne(
+    {
+        student: 1,
+        head : 1
+    },
+    {
+        $set : {marks: 3}
+    },
+).then(res =>{
+    console.log(res);
+});
