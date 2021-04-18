@@ -23,7 +23,92 @@
             </tbody>
           </table>
         </div>
-        <div class="col-4"></div>
+        @{var sno = 0;}
+        <div class="col-4">
+          <form method="POST" class="student-dataupdate" action="student/save">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th scope="col" colspan="2">Reg #:</th>
+                  <th scope="col" colspan="2"></th>
+                </tr>
+                <tr>
+                  <th scope="col" colspan="2">Name:</th>
+                  <th scope="col" colspan="2"></th>
+                </tr>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Head</th>
+                  <th scope="col">Total</th>
+                  <th scope="col">Marks</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">@(++sno)</th>
+                  <td></td>
+                  <td></td>
+                  <td><input class="form-control" type="text" min="0" max="5"></td>
+                </tr>
+                <tr>
+                  <th scope="row">@(++sno)</th>
+                  <td></td>
+                  <td></td>
+                  <td><input class="form-control" type="text" min="0" max="5"></td>
+                </tr>
+                <tr>
+                  <th scope="row">@(++sno)</th>
+                  <td></td>
+                  <td></td>
+                  <td><input class="form-control" type="text" min="0" max="5"></td>
+                </tr>
+                <tr>
+                  <th scope="row">@(++sno)</th>
+                  <td></td>
+                  <td></td>
+                  <td><input class="form-control" type="text" min="0" max="5"></td>
+                </tr>
+                <tr>
+                  <th scope="row">@(++sno)</th>
+                  <td></td>
+                  <td></td>
+                  <td><input class="form-control" type="text" min="0" max="35"></td>
+                </tr>
+                <tr>
+                  <th scope="row">@(++sno)</th>
+                  <td></td>
+                  <td></td>
+                  <td><input class="form-control" type="text" min="0" max="25"></td>
+                </tr>
+                <tr>
+                  <th scope="row">@(++sno)</th>
+                  <td></td>
+                  <td></td>
+                  <td><input class="form-control" type="text" min="0" max="15"></td>
+                </tr>
+                <tr>
+                  <th scope="row">@(++sno)</th>
+                  <td></td>
+                  <td></td>
+                  <td><input class="form-control" type="text" min="0" max="5"></td>
+                </tr>
+                <tr>
+                  <td colspan="3">Total</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td colspan="3">Percentage</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td colspan="3">Grade</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+            @{sno = 0}
+          </form>
+        </div>
       </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
