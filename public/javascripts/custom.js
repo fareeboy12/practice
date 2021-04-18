@@ -168,6 +168,7 @@ function getchanges(){
           var stno = $(this).parent().parent().parent().prev().children().eq(0).children().eq(1).attr("sno")
           $.ajax({
               url: "marks/save",
+              method: "POST",
               data: {
                   marks: updatedmarks,
                   stid: stno,
