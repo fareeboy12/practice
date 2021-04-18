@@ -30,7 +30,17 @@ function getstudents() {
                 )}
                 <td>${total}</td>
                 <td>${Math.round(total * 100 / 100)}%</td>
-                <td>${getgrades(Math.round(total * 100 / 100))}</td>
+                <td>${
+                    $.ajax({
+                        url: "/grade"
+                    }).then( (grades) => { 
+                        grades.map(Grade => {
+                            if (total >= Grade.start && total <= Grade.end) {
+                                Grade.grade
+                            }
+                        })
+                    })
+                }</td>
                 ${total = 0}
                 <td></td>
             </tr>
@@ -57,18 +67,18 @@ function gethead() {
         $(".table-hover thead tr").html(headtitle);
     });
 }
-function getgrades(total) {
+// function getgrades(total) {
 
-    $.ajax({
-        url: "/grade"
-    }).then( (grades) => { 
-        grades.map(grade => {
-            if (total >= grade.start && total <= grade.end) {
-                gradyy = grade.grade;
-            }
-        })
-    })
-}
+//     $.ajax({
+//         url: "/grade"
+//     }).then( (grades) => { 
+//         grades.map(Grade => {
+//             if (total >= Grade.start && total <= Grade.end) {
+//                 Grade.grade
+//             }
+//         })
+//     })
+// }
 
 
 
@@ -115,7 +125,8 @@ function getchanges(){
 }
 
 function changecolors(headid,stno){
-    $("#student-"+headid).css("background","green")
+    $("#student-"+stno).css("background","green");
+    $("#student-"+stno).css("color","white");
 }
 
 function studentform(student){
