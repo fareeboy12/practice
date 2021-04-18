@@ -5,8 +5,8 @@ exports.getStudentMarks = (req, res) => {
 		{
 			$lookup: {
 				from: "marks",
-				localField: "regno",
-				foreignField: "regno",
+				localField: "_id",
+				foreignField: "student",
 				as: "scores",
 			},
 		},

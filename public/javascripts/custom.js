@@ -17,7 +17,7 @@ function getstudents() {
             <td><a href="./">${student.name}</a></td>
             <td>${student.regno}</td>
             ${student.scores.sort((a,b)=>
-				parseFloat(a.hid)-parseFloat(b.hid)).map(score => 
+				parseFloat(a.head)-parseFloat(b.head)).map(score => 
             `<td>${score.marks}</td>`
         )}
         </tr>
