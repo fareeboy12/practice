@@ -1,6 +1,9 @@
-const inputvalue = $("input").val();
+var inputvalue = "";
+$("body").on("focus", "input", function(){
+    inputvalue = $(this).val();
+})   
 $(document).ready(function () {
-    
+ 
     getstudents();
     gethead();
     getchanges();
@@ -36,7 +39,9 @@ function getstudents() {
                     }).then( (grades) => { 
                         grades.map(Grade => {
                             if (total >= Grade.start && total <= Grade.end) {
-                                Grade.grade
+                                //Grade.grade
+                                console.log(JSON.stringify(Grade))
+                                
                             }
                         })
                     })
@@ -93,7 +98,8 @@ function getchanges(){
             if(input <= total){
                 var updatedmarks = $(this).val();
                 var headid = $(this).parent().parent().children().eq(0).text();
-                var stno = $(this).parent().parent().parent().prev().children().eq(0).children().eq(1).attr("sno")
+                var stno = $(this).parent().parent().parent().prev().children().eq(0).children().eq(1).attr("sno");
+                // studentform();
                 $.ajax({
                     url: "marks/save",
                     method: "POST",
@@ -102,7 +108,7 @@ function getchanges(){
                         stid: stno,
                         headid: headid
                     }
-                }).then(getstudents()).then(changecolors(headid,stno));
+                }).then(getstudents()).then(changecolors(stno));
               } 
               else{
                 var minmarks = $(this).attr("min");
@@ -124,7 +130,7 @@ function getchanges(){
       });
 }
 
-function changecolors(headid,stno){
+function changecolors(stno){
     $("#student-"+stno).css("background","green");
     $("#student-"+stno).css("color","white");
 }

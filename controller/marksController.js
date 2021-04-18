@@ -11,6 +11,7 @@ exports.updateMarks = (req, res) => {
         },
     ).then(res =>{
         console.log(res);
+        console.log(req.body);
     });
 
 
