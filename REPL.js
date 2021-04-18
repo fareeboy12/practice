@@ -17,6 +17,12 @@ const db = require("./models");
 	
 // });
 
-db.Head.find().sort({ hid: 1 }).then((res) =>{
-    console.log(JSON.stringify(res));
-});
+// db.Head.find().sort({ hid: 1 }).then((res) =>{
+//     console.log(JSON.stringify(res));
+// });
+
+db.Grade.find().sort({_id:1})
+    .then((res) =>{
+        console.log(res);
+        // res.status(200).json(head);
+    });
