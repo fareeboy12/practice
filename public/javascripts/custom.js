@@ -1,3 +1,4 @@
+var sno=0;
 $(document).ready(function () {
     getstudents();
 });
@@ -11,8 +12,8 @@ function getstudents() {
         console.log(studentsmarks);
         const students = `${studentsmarks.map(student => `
         <tr>
-            <th scope="row">1</th>
-            <td>${student.name}</td>
+            <th scope="row">${++sno}</th>
+            <td><a href="./">${student.name}</a></td>
             <td>${student.regno}</td>
             ${student.scores.sort((a,b)=>
 				parseFloat(a.hid)-parseFloat(b.hid)).map(score => 
