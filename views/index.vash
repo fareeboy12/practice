@@ -15,17 +15,7 @@
           <table class="table table-hover">
             <thead>
               <tr>
-                <th scope="col">S #</th>
-                <th scope="col">Name</th>
-                <th scope="col">Reg. #</th>
-                <th scope="col">Quiz 1</th>
-                <th scope="col">Quiz 2</th>
-                <th scope="col">Assig. 1</th>
-                <th scope="col">Assig. 2</th>
-                <th scope="col">Final 1</th>
-                <th scope="col">Midterm 1</th>
-                <th scope="col">Project 1</th>
-                <th scope="col">CP 1</th>
+
               </tr>
             </thead>
             <tbody>
