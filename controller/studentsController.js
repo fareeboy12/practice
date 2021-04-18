@@ -10,9 +10,9 @@ exports.getStudentMarks = (req, res) => {
 				as: "scores",
 			},
 		},
-		{
-			$unwind: "$scores",
-		},
+		// {
+		// 	$unwind: "$scores",
+		// },
 	]).then((students) => {
 		console.log(students);
 		res.status(200).json(students);

@@ -9,9 +9,9 @@ db.Student.aggregate([
 			as: "scores",
 		},
 	},
-	{
-		$unwind: "$scores",
-	},
+	// {
+	// 	$unwind: "$scores",
+	// },
 ]).then((students) => {
 	console.log(students);
 	
