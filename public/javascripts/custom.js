@@ -14,11 +14,12 @@ function getstudents() {
             <th scope="row">1</th>
             <td>${student.name}</td>
             <td>${student.regno}</td>
-            ${student.scores.map(score => 
+            ${student.scores.sort((a,b)=>
+				parseFloat(a.hid)-parseFloat(b.hid)).map(score => 
             `<td>${score.marks}</td>`
         )}
         </tr>
         `)}`;
         $("tbody").html(students);
-    })
+    });
 }
