@@ -1,84 +1,12 @@
+const inputvalue = $("input").val();
 $(document).ready(function () {
+    
     getstudents();
     gethead();
     getchanges();
     $(".student-dataupdate").hide();
     $("body").on("click", ".student", function () {
-        $(".student-dataupdate").show();
-        var sno = $(this).parent().parent().children().eq(0).text();
-        var name = $(this).text();
-        var regno = $(this).parent().parent().children().eq(2).text();
-        var quiz1head = $(this).parent().parent().parent().prev().children().eq(0).children().eq(3);
-        var quiz1id = $(quiz1head).attr("hid");
-        var quiz2head = $(this).parent().parent().parent().prev().children().eq(0).children().eq(4);
-        var quiz2id = $(quiz2head).attr("hid");
-        var assign1head = $(this).parent().parent().parent().prev().children().eq(0).children().eq(5);
-        var assign1id = $(assign1head).attr("hid");
-        var assign2head = $(this).parent().parent().parent().prev().children().eq(0).children().eq(6);
-        var assign2id = $(assign2head).attr("hid");
-        var finalhead = $(this).parent().parent().parent().prev().children().eq(0).children().eq(7);
-        var finalid = $(finalhead).attr("hid");
-        var midhead = $(this).parent().parent().parent().prev().children().eq(0).children().eq(8);
-        var midid = $(midhead).attr("hid");
-        var projecthead = $(this).parent().parent().parent().prev().children().eq(0).children().eq(9);
-        var projectid = $(projecthead).attr("hid");
-        var cp1head = $(this).parent().parent().parent().prev().children().eq(0).children().eq(10);
-        var cpid = $(cp1head).attr("hid");
-        var totalhead = $(this).parent().parent().parent().prev().children().eq(0).children().eq(11);
-        var percentagehead = $(this).parent().parent().parent().prev().children().eq(0).children().eq(12);
-        var gradehead = $(this).parent().parent().parent().prev().children().eq(0).children().eq(13);
-
-        //getting obtained marks for each head
-        var quiz1obt = $(this).parent().parent().children().eq(3).text();
-        var quiz2obt = $(this).parent().parent().children().eq(4).text();
-        var assign1obt = $(this).parent().parent().children().eq(5).text();
-        var assign2obt = $(this).parent().parent().children().eq(6).text();
-        var final1obt = $(this).parent().parent().children().eq(7).text();
-        var mid1obt = $(this).parent().parent().children().eq(8).text();
-        var project1obt = $(this).parent().parent().children().eq(9).text();
-        var cp1obt = $(this).parent().parent().children().eq(10).text();
-        var totalobt = $(this).parent().parent().children().eq(11).text();
-        var percentageobt = $(this).parent().parent().children().eq(12).text();
-        var gradeobt = $(this).parent().parent().children().eq(13).text();
-        
-        $(".table-bordered thead").children().eq(0).children().eq(1).attr("sno", sno);
-        $(".table-bordered thead").children().eq(0).children().eq(1).text(regno);
-        $(".table-bordered thead").children().eq(1).children().eq(1).text(name);
-        $(".table-bordered tbody").children().eq(0).children().eq(1).text(quiz1head.text());
-        $(".table-bordered tbody").children().eq(0).children().eq(2).text($(quiz1head).attr("marks"));
-        $(".table-bordered tbody").children().eq(0).children().eq(3).children().eq(0).val(quiz1obt);
-        $(".table-bordered tbody").children().eq(0).children().eq(3).children().eq(0).attr("hid", quiz1id);
-        $(".table-bordered tbody").children().eq(1).children().eq(1).text(quiz2head.text());
-        $(".table-bordered tbody").children().eq(1).children().eq(2).text(quiz2head.attr("marks"));
-        $(".table-bordered tbody").children().eq(1).children().eq(3).children().eq(0).val(quiz2obt);
-        $(".table-bordered tbody").children().eq(1).children().eq(3).children().eq(0).attr("hid", quiz2id);
-        $(".table-bordered tbody").children().eq(2).children().eq(1).text(assign1head.text());
-        $(".table-bordered tbody").children().eq(2).children().eq(2).text(assign1head.attr("marks"));
-        $(".table-bordered tbody").children().eq(2).children().eq(3).children().eq(0).val(assign1obt);
-        $(".table-bordered tbody").children().eq(2).children().eq(3).children().eq(0).attr("hid", assign1id);
-        $(".table-bordered tbody").children().eq(3).children().eq(1).text(assign2head.text());
-        $(".table-bordered tbody").children().eq(3).children().eq(2).text(assign2head.attr("marks"));
-        $(".table-bordered tbody").children().eq(3).children().eq(3).children().eq(0).val(assign2obt);
-        $(".table-bordered tbody").children().eq(3).children().eq(3).children().eq(0).attr("hid", assign2id);
-        $(".table-bordered tbody").children().eq(4).children().eq(1).text(finalhead.text());
-        $(".table-bordered tbody").children().eq(4).children().eq(2).text(finalhead.attr("marks"));
-        $(".table-bordered tbody").children().eq(4).children().eq(3).children().eq(0).val(final1obt);
-        $(".table-bordered tbody").children().eq(4).children().eq(3).children().eq(0).attr("hid", finalid);
-        $(".table-bordered tbody").children().eq(5).children().eq(1).text(midhead.text());
-        $(".table-bordered tbody").children().eq(5).children().eq(2).text(midhead.attr("marks"));
-        $(".table-bordered tbody").children().eq(5).children().eq(3).children().eq(0).val(mid1obt);
-        $(".table-bordered tbody").children().eq(5).children().eq(3).children().eq(0).attr("hid", midid);
-        $(".table-bordered tbody").children().eq(6).children().eq(1).text(projecthead.text());
-        $(".table-bordered tbody").children().eq(6).children().eq(2).text(projecthead.attr("marks"));
-        $(".table-bordered tbody").children().eq(6).children().eq(3).children().eq(0).val(project1obt);
-        $(".table-bordered tbody").children().eq(6).children().eq(3).children().eq(0).attr("hid", projectid);
-        $(".table-bordered tbody").children().eq(7).children().eq(1).text(cp1head.text());
-        $(".table-bordered tbody").children().eq(7).children().eq(2).text(cp1head.attr("marks"));
-        $(".table-bordered tbody").children().eq(7).children().eq(3).children().eq(0).val(cp1obt);
-        $(".table-bordered tbody").children().eq(7).children().eq(3).children().eq(0).attr("hid", cpid);
-        $(".table-bordered tbody").children().eq(8).children().eq(1).text(totalobt);
-        $(".table-bordered tbody").children().eq(9).children().eq(1).text(percentageobt);
-        $(".table-bordered tbody").children().eq(10).children().eq(1).text(gradeobt);
+        studentform(this);
     });
 });
 
@@ -143,6 +71,8 @@ function getgrades(total) {
 }
 
 
+
+
 function getchanges(){
     $("body").on('keydown', 'input.form-control', function(e) {
         var input = $(this).val();
@@ -165,7 +95,17 @@ function getchanges(){
                 }).then(getstudents()).then(changecolors(headid,stno));
               } 
               else{
+                var minmarks = $(this).attr("min");
+                var maxmarks = $(this).attr("max");
+                var headname = $(this).parent().parent().children().eq(1).text();
+                $("h4").html(headname+" Marks can only be between "+minmarks+" and "+maxmarks);
+                $(this).val(input);
                 $(this).addClass("border-danger");
+                $(this).val(inputvalue);
+
+
+                
+
               }
             }
             
@@ -175,5 +115,83 @@ function getchanges(){
 }
 
 function changecolors(headid,stno){
-    $("#student-"+headid).addClass("bg-success");
+    $("#student-"+headid).css("background","green")
+}
+
+function studentform(student){
+    $(".student-dataupdate").show();
+    var sno = $(student).parent().parent().children().eq(0).text();
+    var name = $(student).text();
+    var regno = $(student).parent().parent().children().eq(2).text();
+    var quiz1head = $(student).parent().parent().parent().prev().children().eq(0).children().eq(3);
+    var quiz1id = $(quiz1head).attr("hid");
+    var quiz2head = $(student).parent().parent().parent().prev().children().eq(0).children().eq(4);
+    var quiz2id = $(quiz2head).attr("hid");
+    var assign1head = $(student).parent().parent().parent().prev().children().eq(0).children().eq(5);
+    var assign1id = $(assign1head).attr("hid");
+    var assign2head = $(student).parent().parent().parent().prev().children().eq(0).children().eq(6);
+    var assign2id = $(assign2head).attr("hid");
+    var finalhead = $(student).parent().parent().parent().prev().children().eq(0).children().eq(7);
+    var finalid = $(finalhead).attr("hid");
+    var midhead = $(student).parent().parent().parent().prev().children().eq(0).children().eq(8);
+    var midid = $(midhead).attr("hid");
+    var projecthead = $(student).parent().parent().parent().prev().children().eq(0).children().eq(9);
+    var projectid = $(projecthead).attr("hid");
+    var cp1head = $(student).parent().parent().parent().prev().children().eq(0).children().eq(10);
+    var cpid = $(cp1head).attr("hid");
+    var totalhead = $(student).parent().parent().parent().prev().children().eq(0).children().eq(11);
+    var percentagehead = $(student).parent().parent().parent().prev().children().eq(0).children().eq(12);
+    var gradehead = $(student).parent().parent().parent().prev().children().eq(0).children().eq(13);
+
+    //getting obtained marks for each head
+    var quiz1obt = $(student).parent().parent().children().eq(3).text();
+    var quiz2obt = $(student).parent().parent().children().eq(4).text();
+    var assign1obt = $(student).parent().parent().children().eq(5).text();
+    var assign2obt = $(student).parent().parent().children().eq(6).text();
+    var final1obt = $(student).parent().parent().children().eq(7).text();
+    var mid1obt = $(student).parent().parent().children().eq(8).text();
+    var project1obt = $(student).parent().parent().children().eq(9).text();
+    var cp1obt = $(student).parent().parent().children().eq(10).text();
+    var totalobt = $(student).parent().parent().children().eq(11).text();
+    var percentageobt = $(student).parent().parent().children().eq(12).text();
+    var gradeobt = $(student).parent().parent().children().eq(13).text();
+    
+    $(".table-bordered thead").children().eq(0).children().eq(1).attr("sno", sno);
+    $(".table-bordered thead").children().eq(0).children().eq(1).text(regno);
+    $(".table-bordered thead").children().eq(1).children().eq(1).text(name);
+    $(".table-bordered tbody").children().eq(0).children().eq(1).text(quiz1head.text());
+    $(".table-bordered tbody").children().eq(0).children().eq(2).text($(quiz1head).attr("marks"));
+    $(".table-bordered tbody").children().eq(0).children().eq(3).children().eq(0).val(quiz1obt);
+    $(".table-bordered tbody").children().eq(0).children().eq(3).children().eq(0).attr("hid", quiz1id);
+    $(".table-bordered tbody").children().eq(1).children().eq(1).text(quiz2head.text());
+    $(".table-bordered tbody").children().eq(1).children().eq(2).text(quiz2head.attr("marks"));
+    $(".table-bordered tbody").children().eq(1).children().eq(3).children().eq(0).val(quiz2obt);
+    $(".table-bordered tbody").children().eq(1).children().eq(3).children().eq(0).attr("hid", quiz2id);
+    $(".table-bordered tbody").children().eq(2).children().eq(1).text(assign1head.text());
+    $(".table-bordered tbody").children().eq(2).children().eq(2).text(assign1head.attr("marks"));
+    $(".table-bordered tbody").children().eq(2).children().eq(3).children().eq(0).val(assign1obt);
+    $(".table-bordered tbody").children().eq(2).children().eq(3).children().eq(0).attr("hid", assign1id);
+    $(".table-bordered tbody").children().eq(3).children().eq(1).text(assign2head.text());
+    $(".table-bordered tbody").children().eq(3).children().eq(2).text(assign2head.attr("marks"));
+    $(".table-bordered tbody").children().eq(3).children().eq(3).children().eq(0).val(assign2obt);
+    $(".table-bordered tbody").children().eq(3).children().eq(3).children().eq(0).attr("hid", assign2id);
+    $(".table-bordered tbody").children().eq(4).children().eq(1).text(finalhead.text());
+    $(".table-bordered tbody").children().eq(4).children().eq(2).text(finalhead.attr("marks"));
+    $(".table-bordered tbody").children().eq(4).children().eq(3).children().eq(0).val(final1obt);
+    $(".table-bordered tbody").children().eq(4).children().eq(3).children().eq(0).attr("hid", finalid);
+    $(".table-bordered tbody").children().eq(5).children().eq(1).text(midhead.text());
+    $(".table-bordered tbody").children().eq(5).children().eq(2).text(midhead.attr("marks"));
+    $(".table-bordered tbody").children().eq(5).children().eq(3).children().eq(0).val(mid1obt);
+    $(".table-bordered tbody").children().eq(5).children().eq(3).children().eq(0).attr("hid", midid);
+    $(".table-bordered tbody").children().eq(6).children().eq(1).text(projecthead.text());
+    $(".table-bordered tbody").children().eq(6).children().eq(2).text(projecthead.attr("marks"));
+    $(".table-bordered tbody").children().eq(6).children().eq(3).children().eq(0).val(project1obt);
+    $(".table-bordered tbody").children().eq(6).children().eq(3).children().eq(0).attr("hid", projectid);
+    $(".table-bordered tbody").children().eq(7).children().eq(1).text(cp1head.text());
+    $(".table-bordered tbody").children().eq(7).children().eq(2).text(cp1head.attr("marks"));
+    $(".table-bordered tbody").children().eq(7).children().eq(3).children().eq(0).val(cp1obt);
+    $(".table-bordered tbody").children().eq(7).children().eq(3).children().eq(0).attr("hid", cpid);
+    $(".table-bordered tbody").children().eq(8).children().eq(1).text(totalobt);
+    $(".table-bordered tbody").children().eq(9).children().eq(1).text(percentageobt);
+    $(".table-bordered tbody").children().eq(10).children().eq(1).text(gradeobt);
 }
