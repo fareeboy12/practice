@@ -28,10 +28,6 @@ $(document).ready(function () {
         var percentagehead = $(this).parent().parent().parent().prev().children().eq(0).children().eq(12);
         var gradehead = $(this).parent().parent().parent().prev().children().eq(0).children().eq(13);
 
-
-        
-
-
         //getting obtained marks for each head
         var quiz1obt = $(this).parent().parent().children().eq(3).text();
         var quiz2obt = $(this).parent().parent().children().eq(4).text();
@@ -45,10 +41,6 @@ $(document).ready(function () {
         var percentageobt = $(this).parent().parent().children().eq(12).text();
         var gradeobt = $(this).parent().parent().children().eq(13).text();
         
-
-        
-
-
         $(".table-bordered thead").children().eq(0).children().eq(1).attr("sno", sno);
         $(".table-bordered thead").children().eq(0).children().eq(1).text(regno);
         $(".table-bordered thead").children().eq(1).children().eq(1).text(name);
@@ -87,8 +79,6 @@ $(document).ready(function () {
         $(".table-bordered tbody").children().eq(8).children().eq(1).text(totalobt);
         $(".table-bordered tbody").children().eq(9).children().eq(1).text(percentageobt);
         $(".table-bordered tbody").children().eq(10).children().eq(1).text(gradeobt);
-
-        
     });
 });
 
@@ -112,8 +102,9 @@ function getstudents() {
                 )}
                 <td>${total}</td>
                 <td>${Math.round(total * 100 / 100)}%</td>
-                <td></td>
+                <td>${getgrades(Math.round(total * 100 / 100))}</td>
                 ${total = 0}
+                <td></td>
             </tr>
         `)}`;
         $(".table-hover tbody").html(students);
@@ -138,42 +129,51 @@ function gethead() {
         $(".table-hover thead tr").html(headtitle);
     });
 }
-// function getgrades(total) {
+function getgrades(total) {
 
-//     $.ajax({
-//         url: "/grade"
-//     }).then((grades) => {
+    $.ajax({
+        url: "/grade"
+    }).then( (grades) => { 
+        grades.map(grade => {
+            if (total >= grade.start && total <= grade.end) {
+                gradyy = grade.grade;
+            }
+        })
+    })
+}
 
-//         grades.map(grade => {
 
-//             if (total >= grade.start && total <= grade.end) {
-
-//                 gradyy = grade.grade;
-
-//             }
-
-//         })
-
-//     })
-//     return gradyy;
-// }
 function getchanges(){
-    $("body").on('keydown', 'input.form-control', function(e) { 
+    $("body").on('keydown', 'input.form-control', function(e) {
+        var input = $(this).val();
+        var total = parseInt($(this).parent().prev().text());
+
         var keyCode = e.keyCode || e.which; 
         if (keyCode == 9) { 
-        //   e.preventDefault(); 
-          var updatedmarks = $(this).val();
-          var headid = $(this).parent().parent().children().eq(0).text();
-          var stno = $(this).parent().parent().parent().prev().children().eq(0).children().eq(1).attr("sno")
-          $.ajax({
-              url: "marks/save",
-              method: "POST",
-              data: {
-                  marks: updatedmarks,
-                  stid: stno,
-                  headid: headid
+            if(input <= total){
+                var updatedmarks = $(this).val();
+                var headid = $(this).parent().parent().children().eq(0).text();
+                var stno = $(this).parent().parent().parent().prev().children().eq(0).children().eq(1).attr("sno")
+                $.ajax({
+                    url: "marks/save",
+                    method: "POST",
+                    data: {
+                        marks: updatedmarks,
+                        stid: stno,
+                        headid: headid
+                    }
+                }).then(getstudents()).then(changecolors(headid,stno));
+              } 
+              else{
+                $(this).addClass("border-danger");
               }
-          }).then(getstudents());
-        } 
+            }
+            
+        //   e.preventDefault(); 
+          
       });
+}
+
+function changecolors(headid,stno){
+    $("#student-"+headid).addClass("bg-success");
 }
