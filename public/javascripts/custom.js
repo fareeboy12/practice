@@ -164,7 +164,6 @@ function getchanges(){
         //   e.preventDefault(); 
           var updatedmarks = $(this).val();
           var headid = $(this).parent().parent().children().eq(0).text();
-          console.log(headid);
           var stno = $(this).parent().parent().parent().prev().children().eq(0).children().eq(1).attr("sno")
           $.ajax({
               url: "marks/save",
@@ -174,9 +173,7 @@ function getchanges(){
                   stid: stno,
                   headid: headid
               }
-          }).then(()=>{
-              //change colors of rows
-          })
+          }).then(getstudents());
         } 
       });
 }
