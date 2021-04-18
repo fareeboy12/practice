@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const Controller = require("../controller");
 
-router.get("/marks", Controller.Student.getStudentMarks);
+router.get("/", Controller.Head.getHead);
 
 module.exports = router;

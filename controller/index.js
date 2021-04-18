@@ -1,5 +1,5 @@
 module.exports = {
 	Student: require("./studentsController"),
-	// Course: require('./course.controller'),
+	Head: require('./headsController'),
 	// Registration: require('./registration.controller')
 };
